@@ -40,7 +40,7 @@ pipeline {
           steps {
               sh 'rm -rf /var/lib/jenkins/workspace/gol-fromjenkinsfile/jenkinsdockerimg'
               sh 'mkdir /var/lib/jenkins/workspace/gol-fromjenkinsfile/jenkinsdockerimg'
-              sh 'cp /var/lib/jenkins/workspace/gol-fromjenkinsfile/gameoflife-web/target/gameoflife.war /var/lib/jenkins/workspace/GOL-CDCI-pipeline/jenkinsdockerimg/.'
+              sh 'cp /var/lib/jenkins/workspace/gol-fromjenkinsfile/gameoflife-web/target/gameoflife.war /var/lib/jenkins/workspace/gol-fromjenkinsfile/jenkinsdockerimg/.'
               sh 'touch /var/lib/jenkins/workspace/gol-fromjenkinsfile/jenkinsdockerimg/dockerfile'
               sh 'echo "From tomcat" >> /var/lib/jenkins/workspace/gol-fromjenkinsfile/jenkinsdockerimg/dockerfile'
               sh 'echo "ADD gameoflife.war /usr/local/tomcat/webapps" >> /var/lib/jenkins/workspace/gol-fromjenkinsfile/jenkinsdockerimg/dockerfile'
