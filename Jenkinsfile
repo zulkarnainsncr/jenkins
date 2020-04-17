@@ -38,14 +38,14 @@ pipeline {
       stage('deploy') {
           agent any
           steps {
-              sh 'rm -rf /var/lib/jenkins/workspace/GOL-CDCI-pipeline/jenkinsdockerimg'
-              sh 'mkdir /var/lib/jenkins/workspace/GOL-CDCI-pipeline/jenkinsdockerimg'
-              sh 'cp /var/lib/jenkins/workspace/GOL-CDCI-pipeline/gameoflife-web/target/gameoflife.war /var/lib/jenkins/workspace/GOL-CDCI-pipeline/jenkinsdockerimg/.'
-              sh 'touch /var/lib/jenkins/workspace/GOL-CDCI-pipeline/jenkinsdockerimg/dockerfile'
-              sh 'echo "From tomcat" >> /var/lib/jenkins/workspace/GOL-CDCI-pipeline/jenkinsdockerimg/dockerfile'
-              sh 'echo "ADD gameoflife.war /usr/local/tomcat/webapps" >> /var/lib/jenkins/workspace/GOL-CDCI-pipeline/jenkinsdockerimg/dockerfile'
-              sh 'echo "EXPOSE 8080" >> /var/lib/jenkins/workspace/GOL-CDCI-pipeline/jenkinsdockerimg/dockerfile'
-              sh 'sudo docker build -t mytomcat:$BUILD_NUMBER /var/lib/jenkins/workspace/GOL-CDCI-pipeline/jenkinsdockerimg/'
+              sh 'rm -rf /var/lib/jenkins/workspace/gol-fromjenkinsfile/jenkinsdockerimg'
+              sh 'mkdir /var/lib/jenkins/workspace/gol-fromjenkinsfile/jenkinsdockerimg'
+              sh 'cp /var/lib/jenkins/workspace/gol-fromjenkinsfile/gameoflife-web/target/gameoflife.war /var/lib/jenkins/workspace/GOL-CDCI-pipeline/jenkinsdockerimg/.'
+              sh 'touch /var/lib/jenkins/workspace/gol-fromjenkinsfile/jenkinsdockerimg/dockerfile'
+              sh 'echo "From tomcat" >> /var/lib/jenkins/workspace/gol-fromjenkinsfile/jenkinsdockerimg/dockerfile'
+              sh 'echo "ADD gameoflife.war /usr/local/tomcat/webapps" >> /var/lib/jenkins/workspace/gol-fromjenkinsfile/jenkinsdockerimg/dockerfile'
+              sh 'echo "EXPOSE 8080" >> /var/lib/jenkins/workspace/gol-fromjenkinsfile/jenkinsdockerimg/dockerfile'
+              sh 'sudo docker build -t mytomcat:$BUILD_NUMBER /var/lib/jenkins/workspace/gol-fromjenkinsfile/jenkinsdockerimg/'
               sh 'sudo docker run  -itd -P mytomcat:$BUILD_NUMBER'
           }
       }
