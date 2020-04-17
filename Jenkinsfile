@@ -47,7 +47,7 @@ pipeline {
               sh 'echo "EXPOSE 8080" >> /var/lib/jenkins/workspace/gol-fromjenkinsfile/jenkinsdockerimg/dockerfile'
               sh 'sudo docker build -t mytomcat:$BUILD_NUMBER /var/lib/jenkins/workspace/gol-fromjenkinsfile/jenkinsdockerimg/'
               sh 'sudo docker service create --name webtom$BUILD_NUMBER -p 8003:8080 mytomcat:$BUILD_NUMBER'
-              sh 'sudo docker service scale webtom$BUILD_NUMBER=5
+              sh 'sudo docker service scale webtom$BUILD_NUMBER=5'
           }
       }
    }
